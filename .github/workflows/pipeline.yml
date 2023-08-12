@@ -14,16 +14,26 @@ jobs:
 
     runs-on: ubuntu-latest
 
-
     steps:
     - uses: actions/checkout@v3
+    
     - name: Use Node.js 14.x
       uses: actions/setup-node@v3
       with:
         node-version: 14.x
         cache: 'npm'
-    - run: npm install
+        
+    - name: Starting NPM INSTALL
+      run: npm install
    
-    - run: npm run test:unit
-
-    - run: echo "JohnnyPiper"
+    - name: Running Unit Test
+      run: npm run test:unit
+    
+    - name: Adding SoftUni User Name
+      run: echo "JohnnyPiper"
+    
+    - name: Deploy to Render 
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_TOKEN }}
