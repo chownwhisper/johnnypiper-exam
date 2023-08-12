@@ -30,10 +30,10 @@ jobs:
       run: npm run test:unit
     
     - name: Adding SoftUni User Name
-      run: echo "JohnnyPiper"
+      run: echo JohnnyPiper
     
     - name: Deploy to Render 
       uses: johnbeynon/render-deploy-action@v0.0.8
       with:
         service-id: ${{ secrets.SERVICE_ID }}
-        api-key: ${{ secrets.RENDER_TOKEN }}
+        api-key: ${{ secrets.RENDER_API }}
