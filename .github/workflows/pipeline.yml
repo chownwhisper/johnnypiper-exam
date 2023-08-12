@@ -38,23 +38,23 @@ jobs:
           service-id: ${{ secrets.SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API }}
 
-ui_tests:
-  runs-on: ubuntu-latest
-  needs: deploy
-  steps:
-    - uses: actions/checkout@v2
+  ui_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-        cache: 'npm'
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: 'npm'
         
-    - name: Starting NPM INSTALL
-      run: npm install
+      - name: Starting NPM INSTALL
+        run: npm install
       
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       
-    - name: Running UI Test
-      run: npm run test:ui
+      - name: Running UI Test
+        run: npm run test:ui
+
